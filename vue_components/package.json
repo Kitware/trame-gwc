@@ -1,0 +1,55 @@
+{
+    "name": "trame-gwc",
+    "version": "0.1.0",
+    "description": "Girder web components widgets and ui for trame",
+    "private": true,
+    "scripts": {
+        "build": "vue-cli-service build --target lib --name trame_gwc --filename trame-gwc src/use.js",
+        "lint": "vue-cli-service lint"
+    },
+    "files": [
+        "/src/",
+        "/babel.config.js",
+        "/vue.config.js"
+    ],
+    "dependencies": {
+        "@mdi/font": "^5.3.45",
+        "@girder/components": "^3.2.0",
+        "axios": "^0.21.2",
+        "js-cookie": "^2.2.0",
+        "markdown-it": "^12.3.2",
+        "moment": "^2.29.4",
+        "qs": "^6.9.4",
+        "vue": "^2.6.12",
+        "vue-async-computed": "^3.4.1",
+        "vuetify": "^2.3.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.10.2",
+        "@vue/cli-plugin-babel": "^4.4.4",
+        "@vue/cli-plugin-eslint": "~4.4.4",
+        "@vue/cli-plugin-unit-jest": "^4.4.4",
+        "@vue/cli-service": "~4.4.4",
+        "@vue/eslint-config-airbnb": "^5.0.2",
+        "@vue/test-utils": "1.0.0-beta.29",
+        "axios-mock-adapter": "^1.18.1",
+        "babel-eslint": "^10.0.3",
+        "eslint": "^7.5.0",
+        "eslint-plugin-import": "^2.21.2",
+        "eslint-plugin-vue": "^6.1.2",
+        "sass": "^1.26.8",
+        "sass-loader": "^8.0.2",
+        "stylelint": "^13.6.1",
+        "stylelint-config-standard": "^20.0.0",
+        "vue-cli-plugin-vuetify": "~2.0.5",
+        "vue-template-compiler": "^2.6.12",
+        "vuetify-loader": "^1.5.0"
+    },
+    "keywords": [
+        "Kitware",
+        "trame"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+}
