@@ -5,6 +5,7 @@
 <script>
     import { RestClient, NotificationBus } from '@girder/components/src';
     import { computed } from "vue";
+    import { vuetifyConfig } from '@girder/components/src/utils'
 
     export default {
         inject: ['trame'],
@@ -15,6 +16,9 @@
             };
         },
         async created() {
+            // Register Girder Web Component icons mapping in Vuetify
+            Object.assign(this.$vuetify.icons.values, vuetifyConfig.icons.values);
+
             this.girderRest = new RestClient({ apiRoot: this.trame.state.get("api_root") });
             this.notificationBus = new NotificationBus(
                 this.girderRest, {useEventSource: true,});

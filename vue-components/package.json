@@ -4,7 +4,9 @@
     "description": "Girder web components for trame",
     "private": true,
     "scripts": {
-        "build": "vue-cli-service build --target lib --formats umd-min --name trame_gwc --filename trame-gwc src/use.js > /dev/null 2>&1",
+        "build": "vue-cli-service build --target lib --formats umd-min --name trame_gwc --filename trame-gwc src/use.js",
+        "build-unix": "npm run build -- > /dev/null 2>&1",
+        "build-win": "npm run build -- 2> nul",
         "lint": "vue-cli-service lint"
     },
     "files": [
