@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+        entry: black --check
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.4
+    hooks:
+      - id: codespell
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+
+  - repo: local
+    hooks:
+      - id: npm-lint
+        name: Run NPM Lint in vue-components
+        files: ^vue-components/*
+        entry: sh -c 'cd vue-components && npm run lint'
+        language: system

@@ -1,2 +1,2 @@
 [codespell]
-skip = trame_gwc/module/serve/**
+skip = **/package-lock.json
