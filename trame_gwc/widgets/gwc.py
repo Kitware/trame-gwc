@@ -14,18 +14,20 @@ __all__ = [
     "GirderUpsertFolder",
 ]
 
+
 class HtmlElement(AbstractElement):
     def __init__(self, _elem_name, children=None, **kwargs):
         super().__init__(_elem_name, children, **kwargs)
         if self.server:
             self.server.enable_module(module)
 
+
 class GirderAccessControl(HtmlElement):
     """
-        Wraps GirderAccessControl Vue component
+    Wraps GirderAccessControl Vue component
 
-        :param model: Object (required)
-        :param has_permission: Boolean (default: False)
+    :param model: Object (required)
+    :param has_permission: Boolean (default: False)
 
     """
 
@@ -44,14 +46,14 @@ class GirderAccessControl(HtmlElement):
 
 class GirderAuthentication(HtmlElement):
     """
-        Wraps GirderProviderAuthentication Vue component
+    Wraps GirderProviderAuthentication Vue component
 
-        :param register: Boolean (default: False)
-        :param oauth: Boolean (default: False) 
-        :param forgot_password_url: String (default: null)
-        :param forgot_password_route: [Object, String] (default: null)
-        :param force_otp: Boolean (default: False)
-        :param hide_forgot_password: Boolean (default: False)
+    :param register: Boolean (default: False)
+    :param oauth: Boolean (default: False)
+    :param forgot_password_url: String (default: null)
+    :param forgot_password_route: [Object, String] (default: null)
+    :param force_otp: Boolean (default: False)
+    :param hide_forgot_password: Boolean (default: False)
 
     """
 
@@ -74,12 +76,12 @@ class GirderAuthentication(HtmlElement):
 
 class GirderBreadcrumb(HtmlElement):
     """
-        Wraps GirderBreadcrumb Vue component
+    Wraps GirderBreadcrumb Vue component
 
-        :param location: Object (required)
-        :param readonly: Boolean (default: False) 
-        :param append: Array (default: [])
-        :param root_location_disabled: Boolean (default: False)
+    :param location: Object (required)
+    :param readonly: Boolean (default: False)
+    :param append: Array (default: [])
+    :param root_location_disabled: Boolean (default: False)
     """
 
     def __init__(self, children=None, **kwargs):
@@ -99,11 +101,11 @@ class GirderBreadcrumb(HtmlElement):
 
 class GirderDataDetails(HtmlElement):
     """
-        Wraps GirderDataDetails Vue component
+    Wraps GirderDataDetails Vue component
 
-        :param value: Array (required)
-        :param info_keys: Array (default: DefaultInfoKeys)
-        :param action_keys: Array (default: DefaultActionKeys)
+    :param value: Array (required)
+    :param info_keys: Array (default: DefaultInfoKeys)
+    :param action_keys: Array (default: DefaultActionKeys)
     """
 
     def __init__(self, children=None, **kwargs):
@@ -126,37 +128,37 @@ class GirderDataDetails(HtmlElement):
 
 class GirderFileManager(HtmlElement):
     """
-        Wraps GirderFileManager Vue component
+    Wraps GirderFileManager Vue component
 
-        :param value: Array (default [])
-        :param location: Object (default null)
-        :param root_location_disabled: Boolean (default False)
-        :param no_access_control: Boolean (default False)
-        :param selectable: Boolean (default False)
-        :param drag_enabled: Boolean (default False)
-        :param upload_enabled: Boolean (default False)
-        :param new_folder_enabled: Boolean (default False)
-        :param upload_max_show: Number (default 0)
-        :param upload_multiple: Boolean (default False)
-        :param upload_accept: String (default '*')
-        :param pre_upload: Function (default: async {})
-        :param post_upload: Function (default: async {})
-        :param pre_upsert: Function (default: async {})
-        :param post_upsert: Function (default: async {})
-        :param items_per_page: Number (default 10)
-        :param items_per_page_options: Array (default [10, 25, 50])
+    :param value: Array (default [])
+    :param location: Object (default null)
+    :param root_location_disabled: Boolean (default False)
+    :param no_access_control: Boolean (default False)
+    :param selectable: Boolean (default False)
+    :param drag_enabled: Boolean (default False)
+    :param upload_enabled: Boolean (default False)
+    :param new_folder_enabled: Boolean (default False)
+    :param upload_max_show: Number (default 0)
+    :param upload_multiple: Boolean (default False)
+    :param upload_accept: String (default '*')
+    :param pre_upload: Function (default: async {})
+    :param post_upload: Function (default: async {})
+    :param pre_upsert: Function (default: async {})
+    :param post_upsert: Function (default: async {})
+    :param items_per_page: Number (default 10)
+    :param items_per_page_options: Array (default [10, 25, 50])
 
-        Events
+    Events
 
-        :param update_location
-        :param update_items_per_page
-        :param input
-        :param selection_changed
-        :param rowclick
-        :param drag
-        :param dragstart
-        :param dragend
-        :param drop
+    :param update_location
+    :param update_items_per_page
+    :param input
+    :param selection_changed
+    :param rowclick
+    :param drag
+    :param dragstart
+    :param dragend
+    :param drop
 
     """
 
@@ -184,7 +186,7 @@ class GirderFileManager(HtmlElement):
             ("pre_upsert", "preUpsert"),
             ("post_upsert", "postUpsert"),
             ("items_per_page", "itemsPerPage"),
-            ("items_per_page_options", "itemsPerPageOptions")
+            ("items_per_page_options", "itemsPerPageOptions"),
         ]
 
         self._event_names += [
@@ -202,7 +204,7 @@ class GirderFileManager(HtmlElement):
 
 class GirderJobList(HtmlElement):
     """
-        Wraps GirderJobList Vue component
+    Wraps GirderJobList Vue component
 
     """
 
@@ -216,11 +218,12 @@ class GirderJobList(HtmlElement):
 
 class GirderProvider(HtmlElement):
     """
-        Wraps GirderProvider Vue component
+    Wraps GirderProvider Vue component
 
     """
 
     _next_id = 0
+
     def __init__(self, children=None, **kwargs):
         super().__init__(
             "girder-rest-provider",
@@ -238,21 +241,21 @@ class GirderProvider(HtmlElement):
 
 class GirderSearch(HtmlElement):
     """
-        Wraps GirderSearch Vue component
+    Wraps GirderSearch Vue component
 
-        :param hide_search_icon: Boolean (default: False)
-        :param hide_options_menu: Boolean (default: False)
-        :param max_quick_results: Number (default: 6)
-        :param placeholder: String (default: null)
-        :param search_mode_options: Array (default: SearchModeOptions)
-        :param search_mode: String (default: null)
-        :param search_type_options: Array (default: SearchTypeOptions)
-        :param search_types: validator (default: null)
-        :param show_more: Boolean (default: False)
+    :param hide_search_icon: Boolean (default: False)
+    :param hide_options_menu: Boolean (default: False)
+    :param max_quick_results: Number (default: 6)
+    :param placeholder: String (default: null)
+    :param search_mode_options: Array (default: SearchModeOptions)
+    :param search_mode: String (default: null)
+    :param search_type_options: Array (default: SearchTypeOptions)
+    :param search_types: validator (default: null)
+    :param show_more: Boolean (default: False)
 
-        Events
+    Events
 
-        :param select
+    :param select
 
     """
 
@@ -282,18 +285,18 @@ class GirderSearch(HtmlElement):
 
 class GirderUpload(HtmlElement):
     """
-        Wraps GirderUpload Vue component
+    Wraps GirderUpload Vue component
 
-        :param dest: Object (required)
-        :param max_show: Number (default: 0)
-        :param multiple: Boolean (default: True)
-        :param pre_upload: Function (default: {})
-        :param post_upload: Function (default: {})
-        :param upload_cls: Function (default: Upload)
-        :param accept: Object (required)
-        :param start_button_text: String (default: 'Start Upload')
-        :param hide_start_button: Boolean (default: False)
-        :param hide_headline: Boolean (default: False)
+    :param dest: Object (required)
+    :param max_show: Number (default: 0)
+    :param multiple: Boolean (default: True)
+    :param pre_upload: Function (default: {})
+    :param post_upload: Function (default: {})
+    :param upload_cls: Function (default: Upload)
+    :param accept: Object (required)
+    :param start_button_text: String (default: 'Start Upload')
+    :param hide_start_button: Boolean (default: False)
+    :param hide_headline: Boolean (default: False)
 
     """
 
@@ -320,12 +323,12 @@ class GirderUpload(HtmlElement):
 
 class GirderUpsertFolder(HtmlElement):
     """
-        Wraps GirderUpsertFolder Vue component
+    Wraps GirderUpsertFolder Vue component
 
-        :param location: Object (required)
-        :param edit: Boolean (default: False)
-        :param pre_upsert: Function (default: {})
-        :param post_upsert: Function (default: {})
+    :param location: Object (required)
+    :param edit: Boolean (default: False)
+    :param pre_upsert: Function (default: {})
+    :param post_upsert: Function (default: {})
 
     """
 
@@ -342,5 +345,3 @@ class GirderUpsertFolder(HtmlElement):
             ("pre_upsert", "preUpsert"),
             ("post_upsert", "postUpsert"),
         ]
-
-
