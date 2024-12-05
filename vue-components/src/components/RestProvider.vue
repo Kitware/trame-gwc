@@ -27,6 +27,7 @@ export default {
     const user = await this.girderRest.fetchUser();
     if (user) {
       this.trame.state.set('user', user);
+      this.trame.state.set('token', this.girderRest.token);
       this.notificationBus.connect();
     }
 
@@ -45,11 +46,13 @@ export default {
       const user = await this.girderRest.fetchUser();
       if (user) {
         this.trame.state.set('user', user);
+        this.trame.state.set('token', this.girderRest.token);
       }
     },
     logout() {
       this.girderRest.logout();
       this.trame.state.set('user', null);
+      this.trame.state.set('token', null);
     },
   },
 };
