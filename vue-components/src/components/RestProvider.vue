@@ -11,6 +11,12 @@ import { vuetifyConfig } from '@girder/components/src/utils';
 
 export default {
   inject: ['trame'],
+  props: {
+    value: {
+      type: String,
+      required: true,
+    },
+  },
   data() {
     return {
       girderRest: null,
@@ -21,7 +27,7 @@ export default {
     // Register Girder Web Component icons mapping in Vuetify
     Object.assign(this.$vuetify.icons.values, vuetifyConfig.icons.values);
 
-    this.girderRest = new RestClient({ apiRoot: this.trame.state.get('api_root') });
+    this.girderRest = new RestClient({ apiRoot: this.value });
     this.notificationBus = new NotificationBus(this.girderRest, { useEventSource: true });
 
     const user = await this.girderRest.fetchUser();
