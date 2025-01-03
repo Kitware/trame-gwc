@@ -173,7 +173,7 @@ with VAppLayout(server) as layout:
                     color="primary",
                 )
 
-    with gwc.GirderProvider(v_if=("api_root",)) as provider:
+    with gwc.GirderProvider(value=("api_root",), v_if=("api_root",)) as provider:
         # AUTHENTICATION
         with vuetify.VContainer(v_if=("!user",)):
             Headline(

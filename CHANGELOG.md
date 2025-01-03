@@ -10,7 +10,7 @@
 
 ### Ci
 
-* ci: configure inital CI and tests ([`54ef4e8`](https://github.com/Kitware/trame-gwc/commit/54ef4e8b393b53cd3d621c208043dca4128ed2d1))
+* ci: configure initial CI and tests ([`54ef4e8`](https://github.com/Kitware/trame-gwc/commit/54ef4e8b393b53cd3d621c208043dca4128ed2d1))
 
 ### Feature
 

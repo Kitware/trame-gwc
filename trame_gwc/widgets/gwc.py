@@ -46,7 +46,7 @@ class GirderAccessControl(HtmlElement):
 
 class GirderAuthentication(HtmlElement):
     """
-    Wraps GirderProviderAuthentication Vue component
+    Wraps GirderAuthentication Vue component
 
     :param register: Boolean (default: False)
     :param oauth: Boolean (default: False)
@@ -220,6 +220,8 @@ class GirderProvider(HtmlElement):
     """
     Wraps GirderProvider Vue component
 
+    :param value: String (required)
+
     """
 
     _next_id = 0
@@ -231,12 +233,24 @@ class GirderProvider(HtmlElement):
             **kwargs,
         )
 
+        self._attr_names = [
+            "value",
+        ]
+
         GirderProvider._next_id += 1
         self._ref = kwargs.get("ref", f"GirderProvider_{GirderProvider._next_id}")
         self._attributes["ref"] = f'ref="{self._ref}"'
 
     def logout(self):
         self.server.js_call(self._ref, "logout")
+
+    def register_layout(self, layout):
+        """
+        Register self to the root of the layout and
+        clear any previously registered elements (to support hot reloading)
+        """
+        self.clear()
+        layout.root = self
 
 
 class GirderSearch(HtmlElement):
