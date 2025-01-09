@@ -74,3 +74,9 @@ An external Girder API can be used either by changing the TRAME_APP_API_ROOT env
     python examples/demo.py
 
 .. |screenshot| image:: examples/screenshots/demo.png
+
+
+JavaScript dependency
+-----------------------------------------------------------
+
+This Python package bundle the ``@girder/components@3.2.0`` JavaScript library. If you would like us to upgrade it, `please reach out <https://www.kitware.com/trame/>`_.
