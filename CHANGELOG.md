@@ -1,45 +1,66 @@
 # CHANGELOG
 
 
+## v0.1.0 (2025-01-23)
 
-## v0.1.0 (2024-11-27)
+### Bug Fixes
 
-### Chore
+- **ci**: Remove Unix and Mac tests
+  ([`2665ea7`](https://github.com/Kitware/trame-gwc/commit/2665ea7f568cfda1c8dc1bb52aa75476d65627b2))
 
-* chore: init ([`97f9a9c`](https://github.com/Kitware/trame-gwc/commit/97f9a9cb17882dcaf71bb0349501cbd1878749c6))
+- **ci**: Use pyproject and ruff
+  ([`dd725d2`](https://github.com/Kitware/trame-gwc/commit/dd725d2c79b7935e44fb9da7f853fea973792934))
 
-### Ci
+- **codespell**: Fix typo in changelog
+  ([`eff3639`](https://github.com/Kitware/trame-gwc/commit/eff363974446d50401bdf1ff075479acd08ef695))
 
-* ci: configure initial CI and tests ([`54ef4e8`](https://github.com/Kitware/trame-gwc/commit/54ef4e8b393b53cd3d621c208043dca4128ed2d1))
+- **vue-components**: Fix build and linter issues
+  ([`63d54c6`](https://github.com/Kitware/trame-gwc/commit/63d54c6f5fcbf87ec42a31aa0fc93bcd57a17af9))
 
-### Feature
+- **vue-components**: Support building with npm on Windows
+  ([`524024d`](https://github.com/Kitware/trame-gwc/commit/524024d621846348865288b30132517d7345bcf2))
 
-* feat(vue-components): register GWC icons to Vuetify ([`7a9cc9d`](https://github.com/Kitware/trame-gwc/commit/7a9cc9df596f29de7c3c3b42f8a8396dcefae2bb))
+/dev/null does not exist on Windows/Powershell
 
-* feat(trame-gwc): wrap Girder web component for trame ([`a2c3082`](https://github.com/Kitware/trame-gwc/commit/a2c3082b066b77c0be38658a0a31602c7dbae613))
+### Chores
 
-### Fix
+- Init
+  ([`97f9a9c`](https://github.com/Kitware/trame-gwc/commit/97f9a9cb17882dcaf71bb0349501cbd1878749c6))
 
-* fix(vue-components): fix build and linter issues ([`63d54c6`](https://github.com/Kitware/trame-gwc/commit/63d54c6f5fcbf87ec42a31aa0fc93bcd57a17af9))
+### Code Style
 
-* fix(vue-components): support building with npm on Windows
+- Format python scripts
+  ([`ad2e21f`](https://github.com/Kitware/trame-gwc/commit/ad2e21f537406b2eadb124ebe38c79816957ff34))
 
-/dev/null does not exist on Windows/Powershell ([`524024d`](https://github.com/Kitware/trame-gwc/commit/524024d621846348865288b30132517d7345bcf2))
+### Continuous Integration
 
-### Style
+- Configure initial CI and tests
+  ([`1383894`](https://github.com/Kitware/trame-gwc/commit/138389423984c7922f89de99a882a24e5df5a49c))
 
-* style: format python scripts ([`324324a`](https://github.com/Kitware/trame-gwc/commit/324324a8a8f816c1bfac246888020891e2351f2c))
+- **workflows**: Debug test_and_release.yml
+  ([`1b3824d`](https://github.com/Kitware/trame-gwc/commit/1b3824d69597eeeb5bbc77035ac63555349d423c))
 
-### Unknown
+- **workflows**: Fix test_and_release.yml
+  ([`c4770a5`](https://github.com/Kitware/trame-gwc/commit/c4770a552885c0cbea26e1075626fe49f267a54a))
 
-* Merge pull request #6 from Kitware/configure-ci
+- **workflows**: Update test_and_release.yml
+  ([`c346ad8`](https://github.com/Kitware/trame-gwc/commit/c346ad8e448da223e3ca81bde54c7726d48f4bc0))
 
-Configure ci and tests and fix formats ([`f3f2ee7`](https://github.com/Kitware/trame-gwc/commit/f3f2ee7ecfbc8e072862f2d246f59e52a4cc1c39))
+### Documentation
 
-* Merge pull request #3 from Kitware/fix-icons
+- **js**: List JS dependency
+  ([`7e36e2e`](https://github.com/Kitware/trame-gwc/commit/7e36e2eb31494c2cab610fe24e0cf9db4b64f716))
 
-Fix icons ([`8e36edc`](https://github.com/Kitware/trame-gwc/commit/8e36edcc62bb362bd366f9a2543eef2f78777e8f))
+### Features
 
-* Merge pull request #2 from Kitware/wrap_girder_web_components
+- **provider**: Add register layout
+  ([`93d03cf`](https://github.com/Kitware/trame-gwc/commit/93d03cfd8de29eb3b7899210a32c94c2bc135f48))
 
-Wrap Girder web component for trame ([`82975db`](https://github.com/Kitware/trame-gwc/commit/82975dbbab81b6cd43bbae25d76ae50624d94c9f))
+- **trame-gwc**: Wrap Girder web component for trame
+  ([`a2c3082`](https://github.com/Kitware/trame-gwc/commit/a2c3082b066b77c0be38658a0a31602c7dbae613))
+
+- **vue-components**: Add girder token to trame state
+  ([`644b7e7`](https://github.com/Kitware/trame-gwc/commit/644b7e7ee16d16a5c09705a9ffdcdbfaffedc769))
+
+- **vue-components**: Register GWC icons to Vuetify
+  ([`7a9cc9d`](https://github.com/Kitware/trame-gwc/commit/7a9cc9df596f29de7c3c3b42f8a8396dcefae2bb))
