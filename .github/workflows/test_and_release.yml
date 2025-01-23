@@ -64,10 +64,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install OSMesa for Linux
-      if: matrix.config.os == 'ubuntu-latest'
-      run: sudo apt-get install -y libosmesa6-dev
-
     - name: Set Up Node
       uses: actions/setup-node@v4
       with:
