@@ -1,4 +1,4 @@
-from trame_gwc.widgets.gwc import *
+from trame_gwc.widgets.gwc import *  # noqa: F403
 
 
 def initialize(server):

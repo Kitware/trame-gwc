@@ -1,1 +1,4 @@
 graft trame_gwc/module/serve
+prune examples
+prune tests
+prune vue-components

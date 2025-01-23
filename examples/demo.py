@@ -121,7 +121,7 @@ with VAppLayout(server) as layout:
             html.Span("A Trame library using the Vue")
             html.A(
                 "Girder Web Components", href="https://gwc.girder.org/", target="_blank"
-            ),
+            )
             html.Span("for interacting with")
             html.A("data.kitware.com", href="https://data.kitware.com", target="_blank")
             html.Span("data management platform,")
@@ -134,7 +134,7 @@ with VAppLayout(server) as layout:
         with vuetify.VRow():
             with vuetify.VCol(cols=10):
                 with html.Div(classes="title mb-1"):
-                    html.Span("This demo integrates with "),
+                    html.Span("This demo integrates with ")
                     html.A(
                         "data.kitware.com",
                         href="https://data.kitware.com",
@@ -163,7 +163,7 @@ with VAppLayout(server) as layout:
         with vuetify.VRow():
             with vuetify.VCol(cols=10):
                 with html.Div(classes="subtitle-1 mb-1"):
-                    html.Span("Connected to"),
+                    html.Span("Connected to")
                     html.A("{{ api_root }}", href=("api_root",), target="_blank")
             with vuetify.VCol(cols=2):
                 vuetify.VBtn(

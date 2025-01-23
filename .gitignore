@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 .venv
-.Zone.Identifier
+build
+dist
 
 # local env files
 .env.local
