@@ -19,7 +19,7 @@ trame-gwc can be installed with `pip <https://pypi.org/project/trame-gwc/>`_:
 Usage
 -----------------------------------------------------------
 
-The `Trame Tutorial <https://kitware.github.io/trame/docs/tutorial.html>`_ is the place to go to learn how to use the library and start building your own application.
+The `Trame Tutorial <https://kitware.github.io/trame/guide/tutorial>`_ is the place to go to learn how to use the library and start building your own application.
 
 The `API Reference <https://trame.readthedocs.io/en/latest/index.html>`_ documentation provides API-level documentation.
 
@@ -28,12 +28,12 @@ License
 -----------------------------------------------------------
 
 trame-gwc is made available under the Apache License.
-For more details, see `LICENSE <https://github.com/Kitware/trame-gwc/blob/master/LICENSE>`_. This license has been chosen to match the one use by `girder_web_components <https://github.com/girder/girder_web_components>` which can be exposed via this library.
+For more details, see `LICENSE <https://github.com/Kitware/trame-gwc/blob/main/LICENSE>`_. This license has been chosen to match the one use by `girder_web_components <https://github.com/girder/girder_web_components>` which can be exposed via this library.
 
 Community
 -----------------------------------------------------------
 
-`Trame <https://kitware.github.io/trame/>`_ | `Discussions <https://github.com/Kitware/trame/discussions>`_ | `Issues <https://github.com/Kitware/trame/issues>`_ | `RoadMap <https://github.com/Kitware/trame/projects/1>`_ | `Contact Us <https://www.kitware.com/contact-us/>`_
+`Trame <https://kitware.github.io/trame/>`_ | `Discussions <https://github.com/Kitware/trame/discussions>`_ | `Issues <https://github.com/Kitware/trame/issues>`_ | `Contact Us <https://www.kitware.com/contact-us/>`_
 
 .. image:: https://zenodo.org/badge/410108340.svg
     :target: https://zenodo.org/badge/latestdoi/410108340
@@ -48,7 +48,7 @@ Share your experience `with a testimonial <https://github.com/Kitware/trame/issu
 Development
 -----------------------------------------------------------
 
-Build and install the Vue components (see `vue-components/README.md <https://github.com/Kitware/trame-gwc/blob/master/vue-components/README.md>`_)
+Build and install the Vue components (see `vue-components/README.md <https://github.com/Kitware/trame-gwc/blob/main/vue-components/README.md>`_)
 
 .. code-block:: console
 
@@ -66,7 +66,7 @@ Install the application for development
 Example
 -----------------------------------------------------------
 
-Try the `demo app <https://github.com/Kitware/trame-gwc/blob/master/examples/demo.py>`_. The default Girder API is `data.kitware.com <https://data.kitware.com/>`_.
+Try the `demo app <https://github.com/Kitware/trame-gwc/blob/main/examples/demo.py>`_. The default Girder API is `data.kitware.com <https://data.kitware.com/>`_.
 An external Girder API can be used either by changing the TRAME_APP_API_ROOT environment variable or by disconnecting and providing the API root directly in the demo app.
 
 .. code-block:: console
