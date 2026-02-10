@@ -5,10 +5,14 @@ __all__ = [
     "GirderAccessControl",
     "GirderAuthentication",
     "GirderBreadcrumb",
+    "GirderDataBrowser",
     "GirderDataDetails",
+    "GirderDataTable",
     "GirderFileManager",
-    "GirderJobList",
+    "GirderLogin",
+    # "GirderJobList",
     "GirderProvider",
+    "GirderRegister",
     "GirderSearch",
     "GirderUpload",
     "GirderUpsertFolder",
@@ -27,8 +31,13 @@ class GirderAccessControl(HtmlElement):
     Wraps GirderAccessControl Vue component
 
     :param model: Object (required)
-    :param has_permission: Boolean (default: False)
+    :param has_permission: Boolean (default: False)Events
+    :param forgot_password
 
+    Events
+    :param update_model_access
+    :param update_has_permission
+    :param close
     """
 
     def __init__(self, children=None, **kwargs):
@@ -43,6 +52,12 @@ class GirderAccessControl(HtmlElement):
             ("has_permission", "hasPermission"),
         ]
 
+        self._event_names += [
+            ("update_model_access", "update:modelAccess"),
+            ("update_has_permission", "update:hasPermission"),
+            "close",
+        ]
+
 
 class GirderAuthentication(HtmlElement):
     """
@@ -55,6 +70,8 @@ class GirderAuthentication(HtmlElement):
     :param force_otp: Boolean (default: False)
     :param hide_forgot_password: Boolean (default: False)
 
+    Events
+    :param forgot_password
     """
 
     def __init__(self, children=None, **kwargs):
@@ -73,6 +90,10 @@ class GirderAuthentication(HtmlElement):
             ("hide_forgot_password", "hideForgotPassword"),
         ]
 
+        self._event_names += [
+            ("forgot_password", "forgotPassword"),
+        ]
+
 
 class GirderBreadcrumb(HtmlElement):
     """
@@ -82,6 +103,9 @@ class GirderBreadcrumb(HtmlElement):
     :param readonly: Boolean (default: False)
     :param append: Array (default: [])
     :param root_location_disabled: Boolean (default: False)
+
+    Events
+    :param crumb_click
     """
 
     def __init__(self, children=None, **kwargs):
@@ -98,6 +122,62 @@ class GirderBreadcrumb(HtmlElement):
             ("root_location_disabled", "rootLocationDisabled"),
         ]
 
+        self._event_names += [
+            ("crumb_click", "crumbClick"),
+        ]
+
+
+class GirderDataBrowser(HtmlElement):
+    """
+    Wraps GirderDataBrowser Vue component
+
+    :param selected: Array (default [])
+    :param location: Object (default null)
+    :param root_location_disabled: Boolean (default False)
+    :param selectable: Boolean (default False)
+    :param draggable: Boolean (default False)
+    :param options: Number (default { itemsPerPage: 10, page: 1 })
+
+    Events
+    :param update_selected
+    :param update_location
+    :param update_options
+    :param row_click
+    :param row_right_click
+    :param drag
+    :param drag_start
+    :param drag_end
+    :param drop
+    """
+
+    def __init__(self, children=None, **kwargs):
+        super().__init__(
+            "girder-data-browser",
+            children,
+            **kwargs,
+        )
+
+        self._attr_names += [
+            "selected",
+            "location",
+            ("root_location_disabled", "rootLocationDisabled"),
+            "selectable",
+            "draggable",
+            "options",
+        ]
+
+        self._event_names += [
+            ("update_selected", "update:selected"),
+            ("update_location", "update:location"),
+            ("update_options", "update:options"),
+            ("row_click", "rowClick"),
+            ("row_right_click", "rowRightClick"),
+            ("drag_start", "dragStart"),
+            ("drag_end", "dragEnd"),
+            "drag",
+            "drop",
+        ]
+
 
 class GirderDataDetails(HtmlElement):
     """
@@ -106,6 +186,10 @@ class GirderDataDetails(HtmlElement):
     :param value: Array (required)
     :param info_keys: Array (default: DefaultInfoKeys)
     :param action_keys: Array (default: DefaultActionKeys)
+    :param new_folder_enabled: Boolean (default False)
+
+    Events
+    :param action
     """
 
     def __init__(self, children=None, **kwargs):
@@ -119,6 +203,7 @@ class GirderDataDetails(HtmlElement):
             ("value", "value"),
             ("info_keys", "infoKeys"),
             ("action_keys", "actionKeys"),
+            ("new_folder_enabled", "newFolderEnabled"),
         ]
 
         self._event_names += [
@@ -126,11 +211,60 @@ class GirderDataDetails(HtmlElement):
         ]
 
 
+class GirderDataTable(HtmlElement):
+    """
+    Wraps GirderDataTable Vue component
+
+    :param draggable: Boolean (default False)
+    :param loading: Bool (default False)
+    :param options: Number (default { itemsPerPage: 10, page: 1 })
+    :param rows: Array (default [])
+    :param selectable: Boolean (default False)
+    :param selected: Boolean Array (default [])
+    :param server_items_length: Number (default 0)
+
+    Events
+    :param update_selected
+    :param update_options
+    :param row_click
+    :param row_right_click
+    :param drag
+    :param drag_start
+    :param drag_end
+    """
+
+    def __init__(self, children=None, **kwargs):
+        super().__init__(
+            "girder-data-table",
+            children,
+            **kwargs,
+        )
+
+        self._attr_names += [
+            "selected",
+            "location",
+            ("root_location_disabled", "rootLocationDisabled"),
+            "selectable",
+            "draggable",
+            "options",
+        ]
+
+        self._event_names += [
+            ("update_selected", "update:selected"),
+            ("update_options", "update:options"),
+            ("row_click", "rowClick"),
+            ("row_right_click", "rowRightClick"),
+            ("drag_start", "dragStart"),
+            ("drag_end", "dragEnd"),
+            "drag",
+        ]
+
+
 class GirderFileManager(HtmlElement):
     """
     Wraps GirderFileManager Vue component
 
-    :param value: Array (default [])
+    :param selected: Array (default [])
     :param location: Object (default null)
     :param root_location_disabled: Boolean (default False)
     :param no_access_control: Boolean (default False)
@@ -149,17 +283,15 @@ class GirderFileManager(HtmlElement):
     :param items_per_page_options: Array (default [10, 25, 50])
 
     Events
-
+    :param update_selected
     :param update_location
-    :param update_items_per_page
-    :param input
-    :param selection_changed
-    :param rowclick
+    :param update_options
+    :param row_click
+    :param row_right_click
     :param drag
-    :param dragstart
+    :param drag_start
     :param dragend
     :param drop
-
     """
 
     def __init__(self, children=None, **kwargs):
@@ -170,7 +302,7 @@ class GirderFileManager(HtmlElement):
         )
 
         self._attr_names += [
-            "value",
+            "selected",
             "location",
             ("root_location_disabled", "rootLocationDisabled"),
             ("no_access_control", "noAccessControl"),
@@ -190,59 +322,118 @@ class GirderFileManager(HtmlElement):
         ]
 
         self._event_names += [
+            ("update_selected", "update:selected"),
             ("update_location", "update:location"),
-            ("update_items_per_page", "update:itemsPerPage"),
-            "input",
-            ("selection_changed", "selection-changed"),
-            "rowclick",
+            ("update_options", "update:options"),
+            ("row_click", "rowClick"),
+            ("row_right_click", "rowRightClick"),
+            ("drag_start", "dragStart"),
+            ("drag_end", "dragEnd"),
             "drag",
-            "dragstart",
-            "dragend",
             "drop",
         ]
 
 
-class GirderJobList(HtmlElement):
+class GirderLogin(HtmlElement):
     """
-    Wraps GirderJobList Vue component
+    Wraps GirderLogin Vue component
 
+    :param force_otp: Boolean (default: False)
+    :param forgot_password_url: String (default: null)
+    :param forgot_password_route: [Object, String] (default: null)
+    :param hide_forgot_password: Boolean (default: False)
+    :param oauth_providers: Boolean (default: False)
+
+    Events
+    :param forgot_password
     """
 
     def __init__(self, children=None, **kwargs):
         super().__init__(
-            "girder-job-list",
+            "girder-login",
             children,
             **kwargs,
         )
+
+        self._attr_names += [
+            ("force_otp", "forceOtp"),
+            ("forgot_password_url", "forgotPasswordUrl"),
+            ("forgot_password_route", "forgotPasswordRoute"),
+            ("hide_forgot_password", "hideForgotPassword"),
+            ("oauth_providers", "oauthProviders"),
+        ]
+
+        self._event_names += [
+            ("forgot_password", "forgotPassword"),
+        ]
+
+
+# class GirderJobList(HtmlElement):
+#     """
+#     Wraps GirderJobList Vue component
+#     """
+
+#     def __init__(self, children=None, **kwargs):
+#         super().__init__(
+#             "girder-job-list",
+#             children,
+#             **kwargs,
+#         )
 
 
 class GirderProvider(HtmlElement):
     """
     Wraps GirderProvider Vue component
 
-    :param value: String (required)
+    Params:
+    :compute_notification_bus: Boolean (default False)
+    :listen_to_rest_client: Boolean (default True)  # NotificationBus param
+    :use_event_source: Boolean (default False)  # NotificationBus param
+    :with_credentials: Boolean (default False)  # NotificationBus param
+    :api_root: String (default None)  # RestClient param
+    :authenticate_with_credentials: Boolean (default False)  # RestClient param
+    :use_girder_authorization_header: Boolean (default False)  # RestClient param
+    :set_local_cookie: Boolean (default True)  # RestClient param
 
+    Events
+    :param user_logged_in
+    :param user_logged_out
+    :param user_registered
+    :param api_root_updated
+    :param user_fetched
     """
 
     _next_id = 0
 
     def __init__(self, children=None, **kwargs):
         super().__init__(
-            "girder-rest-provider",
+            "girder-provider",
             children,
             **kwargs,
         )
 
         self._attr_names = [
-            "value",
+            ("compute_notification_bus", "computeNotificationBus"),
+            ("listen_to_rest_client", "listenToRestClient"),
+            ("use_event_source", "useEventSource"),
+            ("with_credentials", "withCredentials"),
+            ("api_root", "apiRoot"),
+            ("authenticate_with_credentials", "authenticateWithCredentials"),
+            ("use_girder_authorization_header", "useGirderAuthorizationHeader"),
+            ("set_local_cookie", "setLocalCookie"),
+        ]
+
+        self._event_names += [
+            ("user_logged_in", "userLoggedIn"),
+            ("user_logged_out", "userLoggedOut"),
+            ("user_registered", "userRegistered"),
+            ("api_root_updated", "apiRootUpdated"),
+            ("user_fetched", "userFetched"),
         ]
 
         GirderProvider._next_id += 1
         self._ref = kwargs.get("ref", f"GirderProvider_{GirderProvider._next_id}")
         self._attributes["ref"] = f'ref="{self._ref}"'
-
-    def logout(self):
-        self.server.js_call(self._ref, "logout")
 
     def register_layout(self, layout):
         """
@@ -251,6 +442,40 @@ class GirderProvider(HtmlElement):
         """
         self.clear()
         layout.root = self
+
+    def logout(self):
+        self.server.js_call(self._ref, "logout")
+
+    def disconnect(self):
+        self.server.js_call(self._ref, "setApiRoot", None)
+
+    def connect(self, api_root):
+        self.server.js_call(self._ref, "setApiRoot", api_root)
+
+    def login(self, username, password, otp=None):
+        self.server.js_call(self._ref, "login", username, password, otp)
+
+    def fetch_user(self):
+        self.server.js_call(self._ref, "fetchUser")
+
+
+class GirderRegister(HtmlElement):
+    """
+    Wraps GirderRegister Vue component
+
+    :param oauth_providers: Boolean (default: False)
+    """
+
+    def __init__(self, children=None, **kwargs):
+        super().__init__(
+            "girder-register",
+            children,
+            **kwargs,
+        )
+
+        self._attr_names += [
+            ("oauth_providers", "oauthProviders"),
+        ]
 
 
 class GirderSearch(HtmlElement):
@@ -268,9 +493,11 @@ class GirderSearch(HtmlElement):
     :param show_more: Boolean (default: False)
 
     Events
-
+    :param update_search_mode
+    :param update_search_types
     :param select
-
+    :param error
+    :param more_results
     """
 
     def __init__(self, children=None, **kwargs):
@@ -293,7 +520,11 @@ class GirderSearch(HtmlElement):
         ]
 
         self._event_names += [
+            ("update_search_mode", "update:searchMode"),
+            ("update_search_types", "update:searchTypes"),
             "select",
+            "error",
+            "more_results",
         ]
 
 
@@ -312,6 +543,10 @@ class GirderUpload(HtmlElement):
     :param hide_start_button: Boolean (default: False)
     :param hide_headline: Boolean (default: False)
 
+    Events
+    :param files_changed
+    :param error
+    :param done
     """
 
     def __init__(self, children=None, **kwargs):
@@ -334,6 +569,12 @@ class GirderUpload(HtmlElement):
             ("hide_headline", "hideHeadline"),
         ]
 
+        self._event_names += [
+            ("files_changed", "filesChanged"),
+            "error",
+            "done",
+        ]
+
 
 class GirderUpsertFolder(HtmlElement):
     """
@@ -343,7 +584,6 @@ class GirderUpsertFolder(HtmlElement):
     :param edit: Boolean (default: False)
     :param pre_upsert: Function (default: {})
     :param post_upsert: Function (default: {})
-
     """
 
     def __init__(self, children=None, **kwargs):
@@ -358,4 +598,10 @@ class GirderUpsertFolder(HtmlElement):
             "edit",
             ("pre_upsert", "preUpsert"),
             ("post_upsert", "postUpsert"),
+        ]
+
+        self._event_names += [
+            "error",
+            "dismiss",
+            "done",
         ]

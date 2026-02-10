@@ -6,136 +6,161 @@ on:
   pull_request:
     branches: [ main ]
 
+env:
+  NODE_VERSION: 20
+  PYTHON_VERSION: "3.13"
+  PNPM_VERSION: "10.8.0"
+
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: ${{ env.PYTHON_VERSION }}
 
-      - uses: actions/setup-node@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: "16"
+          version: ${{ env.PNPM_VERSION }}
 
-      - name: Install Node.js dependencies
-        run: npm install
+      - name: Set up Node + pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: vue-components/pnpm-lock.yaml
+
+      - name: Install Node dependencies
         working-directory: ./vue-components
+        run: pnpm install
 
-      # Install and run pre-commit
-      - run: |
+      - name: Run pre-commit
+        run: |
           pip install pre-commit
-          pre-commit install
           pre-commit run --all-files
+
 
   pytest:
     name: Pytest ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
+
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.10"]
         config:
-        - {
-            name: "Linux",
-            os: ubuntu-latest
-          }
-        - {
-            name: "MacOSX",
-            os: macos-latest
-          }
-        - {
-            name: "Windows",
-            os: windows-latest
-          }
-
-    defaults:
-      run:
-        shell: bash
+          - { name: "Linux", os: ubuntu-latest }
+          - { name: "MacOSX", os: macos-latest }
+          - { name: "Windows", os: windows-latest }
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Set Up Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: 18
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
 
-    - name: Build Vue Components
-      run: |
-        cd vue-components
-        npm i
-        npm run build
+      - name: Set up Node + pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: vue-components/pnpm-lock.yaml
 
-    - name: Install and Run Tests
-      run: |
-        pip install ".[dev]"
-        pytest -s ./tests
+      - name: Build Vue Components
+        working-directory: vue-components
+        run: |
+          pnpm install
+          pnpm run build
 
-  test-npm-build:
+      - name: Install and Run Tests
+        run: |
+          pip install ".[dev]"
+          pytest -s ./tests
+
+
+  test-pnpm-build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Set Up Node
-        uses: actions/setup-node@v3
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 18
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node + pnpm
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: vue-components/pnpm-lock.yaml
 
       - name: Build Vue Components
+        working-directory: vue-components
         run: |
-          cd vue-components
-          npm ci
-          npm run build
+          pnpm install --frozen-lockfile
+          pnpm run build
 
       - name: Debug event name
         run: echo "Event name is:" ${{ github.event_name }}
 
+
   release:
-    needs: [
-      pre-commit,
-      pytest,
-      test-npm-build,
-    ]
+    needs: [ pre-commit, pytest, test-pnpm-build ]
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+
     environment:
       name: pypi
       url: https://pypi.org/p/trame-gwc
+
     permissions:
-      id-token: write # IMPORTANT: mandatory for trusted publishing
-      contents: write # IMPORTANT: mandatory for making GitHub Releases
+      id-token: write
+      contents: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set Up Node
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node + pnpm
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: vue-components/pnpm-lock.yaml
 
       - name: Build Vue Components
+        working-directory: vue-components
         run: |
-          cd vue-components
-          npm ci
-          npm run build
+          pnpm install --frozen-lockfile
+          pnpm run build
 
-      - name: Install dependencies
+      - name: Install Python build tools
         run: |
-            python -m pip install --upgrade pip setuptools wheel build python-semantic-release
+          python -m pip install --upgrade pip wheel build python-semantic-release
 
       - name: Python Semantic Release
         id: release
@@ -143,15 +168,15 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish package to PyPI
         if: steps.release.outputs.released == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
 
-      - name: Publish package distributions to GitHub Releases
-        uses: python-semantic-release/upload-to-gh-release@main
+      - name: Publish GitHub Release assets
         if: steps.release.outputs.released == 'true'
+        uses: python-semantic-release/upload-to-gh-release@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.release.outputs.tag }}

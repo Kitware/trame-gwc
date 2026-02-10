@@ -67,10 +67,10 @@ Example
 -----------------------------------------------------------
 
 Try the `demo app <https://github.com/Kitware/trame-gwc/blob/main/examples/demo.py>`_. The default Girder API is `data.kitware.com <https://data.kitware.com/>`_.
-An external Girder API can be used either by changing the TRAME_APP_API_ROOT environment variable or by disconnecting and providing the API root directly in the demo app.
 
 .. code-block:: console
 
+    pip install ".[examples]"
     python examples/demo.py
 
 .. |screenshot| image:: examples/screenshots/demo.png

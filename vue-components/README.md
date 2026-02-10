@@ -5,11 +5,6 @@ This sub-directory capture the client side components that you want to expose in
 ## Build
 
 ```bash
-npm i
-npm run build
-```
-or
-```bash
-yarn install
-yarn build
+pnpm i
+pnpm run build
 ```

@@ -1,40 +1,30 @@
 {
     "name": "trame-gwc",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Girder web components for trame",
     "private": true,
     "scripts": {
-        "build": "vue-cli-service build --target lib --formats umd-min --name trame_gwc --filename trame-gwc src/use.js",
-        "build-unix": "npm run build -- > /dev/null 2>&1",
-        "build-win": "npm run build -- 2> nul",
-        "lint": "vue-cli-service lint"
+        "build": "vite build",
+        "build:dev": "vite build --emptyOutDir --mode development",
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-pattern public"
     },
     "files": [
-        "/src/",
-        "/babel.config.js",
-        "/vue.config.js"
+        "dist/*",
+        "src/*",
+        "*.json",
+        "*.js"
     ],
     "dependencies": {
-        "@mdi/font": "^5.3.45",
-        "@girder/components": "^3.2.0",
-        "vue": "^2.6.12",
-        "vue-async-computed": "^3.4.1",
-        "vuetify": "^2.3.1"
+        "@girder/components": "^4.0.0",
+        "vue": "^3.5.21"
     },
     "devDependencies": {
-        "@babel/core": "^7.10.2",
-        "@vue/cli-plugin-babel": "^4.4.4",
-        "@vue/cli-plugin-eslint": "~4.4.4",
-        "@vue/cli-service": "~4.4.4",
-        "@vue/eslint-config-prettier": "^6.0.0",
-        "babel-eslint": "^10.0.3",
-        "eslint": "^6.0.0",
-        "eslint-plugin-prettier": "^3.1.3",
-        "eslint-plugin-vue": "^6.1.2",
-        "prettier": "^1.19.1",
-        "sass": "^1.26.8",
-        "sass-loader": "^8.0.2",
-        "vue-template-compiler": "^2.6.12"
+        "@eslint/js": "^9.0.1",
+        "@vitejs/plugin-vue": "^6.0.1",
+        "eslint": "^9.0.0",
+        "eslint-plugin-vue": "^10.6.2",
+        "vite": "^7.1.5",
+        "vue-eslint-parser": "^10.2.0"
     },
     "keywords": [
         "Kitware",
