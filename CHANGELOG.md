@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.2.0 (2026-02-10)
+
+### Documentation
+
+- Update links in readme
+  ([`2eaacf8`](https://github.com/Kitware/trame-gwc/commit/2eaacf883ceb99946227e10a3f3dd4ad246641b3))
+
+### Features
+
+- **vue3**: Adapt trame-gwc to vue3 version of GWC
+  ([`ca88d61`](https://github.com/Kitware/trame-gwc/commit/ca88d61806da49c5faf5996851b58490854d6b62))
+
+
 ## v0.1.0 (2025-01-23)
 
 ### Bug Fixes
