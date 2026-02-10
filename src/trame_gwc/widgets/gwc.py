@@ -150,6 +150,8 @@ class GirderDataBrowser(HtmlElement):
     :param drop
     """
 
+    _next_id = 0
+
     def __init__(self, children=None, **kwargs):
         super().__init__(
             "girder-data-browser",
@@ -177,6 +179,13 @@ class GirderDataBrowser(HtmlElement):
             "drag",
             "drop",
         ]
+
+        GirderDataBrowser._next_id += 1
+        self._ref = kwargs.get("ref", f"GirderProvider_{GirderDataBrowser._next_id}")
+        self._attributes["ref"] = f'ref="{self._ref}"'
+
+    def refresh(self):
+        self.server.js_call(self._ref, "refresh")
 
 
 class GirderDataDetails(HtmlElement):
@@ -294,6 +303,8 @@ class GirderFileManager(HtmlElement):
     :param drop
     """
 
+    _next_id = 0
+
     def __init__(self, children=None, **kwargs):
         super().__init__(
             "girder-file-manager",
@@ -332,6 +343,13 @@ class GirderFileManager(HtmlElement):
             "drag",
             "drop",
         ]
+
+        GirderFileManager._next_id += 1
+        self._ref = kwargs.get("ref", f"GirderProvider_{GirderFileManager._next_id}")
+        self._attributes["ref"] = f'ref="{self._ref}"'
+
+    def refresh(self):
+        self.server.js_call(self._ref, "refresh")
 
 
 class GirderLogin(HtmlElement):
