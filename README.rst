@@ -75,16 +75,16 @@ default Girder instance.
 Available examples
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**Basic demo**
+**Showcase demo**
 
-The ``basic/demo.py`` application is a lightweight demonstration of the
+The ``showcase/app.py`` application is a lightweight demonstration of the
 available Girder Web Components and their integration with trame.
 It is inspired by the official
 `Girder Web Components demo app <https://gwc.girder.org/>`_.
 
-**Advanced example**
+**File Browser example**
 
-The ``advanced/demo.py`` application shows how to build a more
+The ``file_browser/app.py`` application shows how to build a more
 structured trame application around Girder. It demonstrates how to:
 
 - browse the Girder database
@@ -100,10 +100,10 @@ Run the examples
     pip install ".[examples]"
 
     # Run the basic demo
-    python examples/basic/demo.py
+    python examples/showcase/app.py
 
     # Run the advanced example
-    python examples/advanced/file_browser.py
+    python examples/file_browser/app.py
 
 
 .. |screenshot| image:: examples/screenshots/demo.png

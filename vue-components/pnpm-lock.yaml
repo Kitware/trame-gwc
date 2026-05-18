@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@girder/components':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.2
+        version: 4.0.2
       vue:
         specifier: ^3.5.21
         version: 3.5.28
@@ -250,8 +250,8 @@ packages:
   '@fontsource/roboto@5.2.7':
     resolution: {integrity: sha512-fca6Jtyxn6kPR51+TTTMCFm0FOhnKaLEYYiAQc8P/4iFCKoKGR0aX89QR4CfP+N64RPXJus64UxhJaVENnSM6Q==}
 
-  '@girder/components@4.0.0':
-    resolution: {integrity: sha512-5450vT5V6bAkAZi0ncIwLr7FpHPbBs48eH4r9ZIV3wqwuVEJU83Fvyq2vOPVNWQ4xTkHxsJ/eFwFiTlke8NKtg==}
+  '@girder/components@4.0.2':
+    resolution: {integrity: sha512-b/9hRxKMrTPHQ9DQc/kdztQMAhdDd5+L0brSSzJ/qg1O+qpJr5heT7UFGmHomxzhZ0tIQv5EZe3VAl/Foz9R/Q==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1254,7 +1254,7 @@ snapshots:
 
   '@fontsource/roboto@5.2.7': {}
 
-  '@girder/components@4.0.0':
+  '@girder/components@4.0.2':
     dependencies:
       '@fontsource/roboto': 5.2.7
       '@mdi/font': 7.4.47
