@@ -113,3 +113,8 @@ JavaScript dependency
 -----------------------------------------------------------
 
 This Python package bundle the ``@girder/components@3.2.0`` JavaScript library. If you would like us to upgrade it, `please reach out <https://www.kitware.com/trame/>`_.
+
+Acknowledgements
+-----------------------------------------------------------
+
+This work was partly funded by the French government through the National Research Agency (ANR) under the `PEPR Digital Health ChroniCardio (22-PESN-0015) <https://pepr-santenum.fr/en/2023/11/08/chronicardio-en/>`_.
