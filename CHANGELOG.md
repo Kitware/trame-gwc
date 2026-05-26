@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v0.2.1 (2026-05-26)
+
+### Bug Fixes
+
+- Update python and js dependencies
+  ([`9d201a9`](https://github.com/Kitware/trame-gwc/commit/9d201a935c9a6d4a08b2772ec59776f051d6a97b))
+
+### Chores
+
+- Add version in served package
+  ([`dc7bc02`](https://github.com/Kitware/trame-gwc/commit/dc7bc02f8ad631daeb25847ce04b47b19dc2d3e9))
+
+- **examples**: Add an example to download data from girder
+  ([`575bd3a`](https://github.com/Kitware/trame-gwc/commit/575bd3a8c75d735746f4418dbfe2305d1ba7d4c0))
+
+### Documentation
+
+- Update README with new example
+  ([`a4926ae`](https://github.com/Kitware/trame-gwc/commit/a4926aedc5664e7f599aebfbb2a0b5ba192c38e3))
+
+
 ## v0.2.0 (2026-02-10)
 
 ### Documentation
