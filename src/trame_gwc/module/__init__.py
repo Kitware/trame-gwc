@@ -1,10 +1,11 @@
 from pathlib import Path
 
+from trame_gwc import __version__
 
 serve_path = str(Path(__file__).with_name("serve").resolve())
-serve = {"__trame_gwc": serve_path}
-scripts = ["__trame_gwc/trame_gwc.umd.js"]
-styles = ["__trame_gwc/trame_gwc.css"]
+serve = {f"__trame_gwc_{__version__}": serve_path}
+scripts = [f"__trame_gwc_{__version__}/trame_gwc.umd.js"]
+styles = [f"__trame_gwc_{__version__}/trame_gwc.css"]
 vue_use = [
     (
         "trame_gwc",

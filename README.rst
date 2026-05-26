@@ -53,9 +53,9 @@ Build and install the Vue components (see `vue-components/README.md <https://git
 .. code-block:: console
 
     cd vue-components
-    npm i
-    npm run build
-    cd -
+    pnpm i
+    pnpm run build
+    cd ..
 
 Install the application for development
 
@@ -63,15 +63,48 @@ Install the application for development
 
     pip install -e .
 
-Example
+Examples
 -----------------------------------------------------------
 
-Try the `demo app <https://github.com/Kitware/trame-gwc/blob/main/examples/demo.py>`_. The default Girder API is `data.kitware.com <https://data.kitware.com/>`_.
+This repository includes several example applications demonstrating how to
+use Girder Web Components with trame.
+
+The examples use `data.kitware.com <https://data.kitware.com/>`_ as the
+default Girder instance.
+
+Available examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Showcase demo**
+
+The ``showcase/app.py`` application is a lightweight demonstration of the
+available Girder Web Components and their integration with trame.
+It is inspired by the official
+`Girder Web Components demo app <https://gwc.girder.org/>`_.
+
+**File Browser example**
+
+The ``file_browser/app.py`` application shows how to build a more
+structured trame application around Girder. It demonstrates how to:
+
+- browse the Girder database
+- parse collections and folders
+- manage authentication
+- download files (using the girder client)
+
+Run the examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: console
 
     pip install ".[examples]"
-    python examples/demo.py
+
+    # Run the basic demo
+    python examples/showcase/app.py
+
+    # Run the advanced example
+    python examples/file_browser/app.py
+
 
 .. |screenshot| image:: examples/screenshots/demo.png
 

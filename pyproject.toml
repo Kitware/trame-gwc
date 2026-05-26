@@ -29,6 +29,8 @@ dev = [
     "pytest",
 ]
 examples = [
+    "girder-client",
+    "py-undo-stack",
     "trame",
     "trame-vuetify",
 ]
